@@ -1,0 +1,21 @@
+# Logs
+logs
+*.log
+
+# Build output
+dist
+out
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.local
+*.swp
+*.swo
+*.sln
+*.user

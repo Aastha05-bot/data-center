@@ -1,0 +1,614 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title id="pageTitle">Where Does the Internet Live? | Nepal · Enhanced Learning</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Progress -->
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- VOICE NARRATION TOGGLE -->
+  <div class="audio-toggle-wrap" id="audioToggleWrap">
+    <div class="audio-status" id="audioStatus">🔊 Auto-narrating: <span id="audioStatusText">—</span></div>
+    <button class="audio-toggle-btn" id="audioToggleBtn" aria-label="Toggle auto-narration" title="Turn auto-narration on/off">
+      <span class="wave-icon" id="waveIcon"><span></span><span></span><span></span><span></span><span></span></span>
+      <span id="audioToggleLabel">Narration: On</span>
+    </button>
+  </div>
+
+  <!-- INTRO (silent) -->
+  <section class="intro" data-section="silent">
+    <canvas id="introCanvas"></canvas>
+    <div class="intro-blob-cluster" aria-hidden="true">
+      <div class="iblob" style="width:500px;height:500px;background:#AF9ED7;top:-100px;right:-120px;--dur:9s;--tx:-30px;--ty:20px;"></div>
+      <div class="iblob" style="width:360px;height:360px;background:#77C0F7;bottom:-80px;right:10%;--dur:11s;--tx:20px;--ty:-40px;"></div>
+      <div class="iblob" style="width:280px;height:280px;background:#FDE688;top:30%;right:5%;--dur:7s;--tx:-15px;--ty:30px;"></div>
+      <div class="iblob" style="width:200px;height:200px;background:#FDC9B4;top:10%;right:30%;--dur:13s;--tx:25px;--ty:-15px;"></div>
+    </div>
+    <div class="intro-pill" id="introPill0" style="background:rgba(175,158,215,0.18);border:1.5px solid rgba(175,158,215,0.4);color:#7a6aaa;top:12%;right:8%;--pr:-4deg;">🖥 Servers</div>
+    <div class="intro-pill" id="introPill1" style="background:rgba(119,192,247,0.18);border:1.5px solid rgba(119,192,247,0.4);color:#4a7aaa;top:22%;right:42%;--pr:3deg;">⚡ 15+ MW</div>
+    <div class="intro-pill" id="introPill2" style="background:rgba(253,230,136,0.3);border:1.5px solid rgba(253,200,80,0.4);color:#8a6a00;bottom:18%;left:4%;--pr:-6deg;">🏔 Nepal</div>
+    <div class="intro-pill" id="introPill3" style="background:rgba(145,200,169,0.2);border:1.5px solid rgba(100,180,130,0.4);color:#2a6a4a;bottom:28%;right:6%;--pr:2deg;">🌐 9 Data Centers</div>
+    <div class="intro-pill" id="introPill4" style="background:rgba(253,201,180,0.25);border:1.5px solid rgba(220,140,110,0.4);color:#8a4a3a;top:70%;right:38%;--pr:-2deg;">💧 Cooling</div>
+
+    <div class="intro-left">
+      <span class="intro-chapter-label" id="introChapterLabel">Chapter 001 · Introduction</span>
+      <svg width="120" height="58" viewBox="0 0 140 65" style="margin-bottom:1.2rem;">
+        <rect x="16" y="16" width="42" height="34" rx="5" fill="#AF9ED7" opacity="0.85"/>
+        <rect x="62" y="10" width="24" height="18" rx="3" fill="#77C0F7" opacity="0.85"/>
+        <rect x="90" y="18" width="38" height="36" rx="5" fill="#FDC9B4" opacity="0.85"/>
+        <circle cx="37" cy="33" r="4" fill="#FDE688"/>
+        <circle cx="74" cy="19" r="3" fill="#FDE688"/>
+        <circle cx="109" cy="36" r="4.5" fill="#FDE688"/>
+      </svg>
+      <h1 id="introTitle">Where Does<br>the Internet <span class="bleed-word">Live?</span></h1>
+      <p class="subtitle" id="introSubtitle">A look inside the buildings that power the internet — and what that means for Nepal.</p>
+      <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <span id="introBadge0" style="font-size:0.65rem;font-weight:700;background:rgba(175,158,215,0.12);padding:0.2rem 0.8rem;border-radius:20px;color:var(--purple);border:1px solid rgba(175,158,215,0.15);">📘 Active learning</span>
+        <span id="introBadge1" style="font-size:0.65rem;font-weight:700;background:rgba(253,230,136,0.2);padding:0.2rem 0.8rem;border-radius:20px;color:#8a6a00;border:1px solid rgba(253,230,136,0.3);">🧠 Key terms</span>
+      </div>
+    </div>
+
+    <div class="intro-right">
+      <div class="intro-dc-visual">
+        <svg width="280" height="260" viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="80" width="220" height="160" rx="10" fill="#AF9ED7" opacity="0.25"/>
+          <rect x="30" y="80" width="220" height="160" rx="10" fill="none" stroke="#AF9ED7" stroke-width="2.5"/>
+          <line x1="140" y1="80" x2="140" y2="40" stroke="#AF9ED7" stroke-width="2"/>
+          <circle cx="140" cy="36" r="6" fill="#FDE688"/>
+          <rect x="55" y="110" width="30" height="100" rx="4" fill="#77C0F7" opacity="0.7"/>
+          <rect x="95" y="120" width="30" height="90" rx="4" fill="#91C8A9" opacity="0.7"/>
+          <rect x="135" y="105" width="30" height="105" rx="4" fill="#77C0F7" opacity="0.7"/>
+          <rect x="175" y="118" width="30" height="92" rx="4" fill="#91C8A9" opacity="0.7"/>
+          <circle cx="65" cy="120" r="4" fill="#FDE688" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;0.2;0.9" dur="1.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="105" cy="130" r="4" fill="#FDC9B4" opacity="0.9">
+            <animate attributeName="opacity" values="0.2;0.9;0.2" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="145" cy="115" r="4" fill="#FDE688" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;0.3;0.9" dur="0.9s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="185" cy="128" r="4" fill="#91C8A9" opacity="0.9">
+            <animate attributeName="opacity" values="0.3;0.9;0.3" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+          <text x="140" y="254" text-anchor="middle" fill="#AF9ED7" font-size="11" font-weight="700" font-family="sans-serif" opacity="0.7">DATA CENTER</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE: welcome (silent) -->
+  <div class="guide-band" style="background:linear-gradient(180deg, #fdfbf6 0%, #e6d8f5 100%); --guide-accent:175,158,215;" data-section="silent">
+    <div class="guide-band-blob" aria-hidden="true" style="width:280px;height:280px;top:-90px;right:-60px;"></div>
+    <div class="guide-card">
+      <div class="guide-avatar-wrap">
+        <svg class="guide-avatar" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="21" fill="#77C0F7"/>
+          <circle cx="15" cy="20" r="3" fill="#fff"/>
+          <circle cx="29" cy="20" r="3" fill="#fff"/>
+          <path d="M14 28 Q22 34 30 28" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="22" y1="8" x2="22" y2="12" stroke="#FDE688" stroke-width="2"/>
+          <circle cx="22" cy="6" r="2.5" fill="#FDE688"/>
+        </svg>
+      </div>
+      <div class="guide-bubble">
+        <p id="guideWelcomeText">👋 I'm your guide. This page can <strong>read itself aloud</strong> as you scroll. Listen to each section, or turn it off anytime with the button in the corner. Try it!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRETRAINING: Key Terms (silent) -->
+  <section class="pretrain-section" data-section="silent">
+    <div class="pretrain-blob"></div>
+    <div class="pretrain-blob"></div>
+    <div class="pretrain-blob"></div>
+    <div class="pretrain-header">
+      <span class="pretrain-label" id="pretrainLabel">🧠 Pretraining</span>
+      <h2 id="pretrainTitle">Key Terms to Know</h2>
+      <p class="pretrain-sub" id="pretrainSub">Learn these words before we dive in — they'll help you build a mental model of how data centers work.</p>
+    </div>
+    <div class="pretrain-grid" id="pretrainGrid">
+      <div class="pretrain-card">
+        <span class="pt-icon">🖥️</span>
+        <span class="pt-term">Data Center</span>
+        <span class="pt-def">A building full of computers (servers) that store data and run apps.</span>
+        <span class="pt-hint">Think: "a hotel for the internet"</span>
+      </div>
+      <div class="pretrain-card">
+        <span class="pt-icon">⚡</span>
+        <span class="pt-term">UPS</span>
+        <span class="pt-def">Uninterruptible Power Supply — a battery that keeps servers running during power cuts.</span>
+        <span class="pt-hint">Bridges the gap before generators start</span>
+      </div>
+      <div class="pretrain-card">
+        <span class="pt-icon">💧</span>
+        <span class="pt-term">CRAC</span>
+        <span class="pt-def">Computer Room Air Conditioning — cools the servers so they don't overheat.</span>
+        <span class="pt-hint">Uses water or refrigerant to remove heat</span>
+      </div>
+      <div class="pretrain-card">
+        <span class="pt-icon">🔋</span>
+        <span class="pt-term">Generator</span>
+        <span class="pt-def">A diesel engine that provides power during longer outages.</span>
+        <span class="pt-hint">Can run for days if refueled</span>
+      </div>
+      <div class="pretrain-card">
+        <span class="pt-icon">🌐</span>
+        <span class="pt-term">Bandwidth</span>
+        <span class="pt-def">The amount of data that can move through a network connection at once.</span>
+        <span class="pt-hint">Like lanes on a highway</span>
+      </div>
+      <div class="pretrain-card">
+        <span class="pt-icon">♻️</span>
+        <span class="pt-term">E-waste</span>
+        <span class="pt-def">Discarded electronic equipment that contains toxic materials.</span>
+        <span class="pt-hint">Old servers become e-waste</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- SECTION 1: HORIZONTAL -->
+  <div class="section-wrap" id="wrap1">
+    <div class="section-sticky" style="background:radial-gradient(ellipse 90% 70% at 25% 15%, #c4b8e6 0%, #AF9ED7 55%, #9c8cc9 100%);">
+      <div class="h-track" id="hTrack">
+
+        <div class="h-panel" style="background:radial-gradient(ellipse 80% 60% at 20% 20%, #c4b8e6 0%, #AF9ED7 60%, #9788bf 100%);" data-section="data-center-basics">
+          <div class="blob" style="width:300px;height:300px;background:#FDC9B4;top:-60px;left:-80px;"></div>
+          <span class="h-chapter-label" id="panel0ChapterLabel">Chapter 01 · What Is a Data Center</span>
+          <div class="h-panel-content">
+            <span class="h-panel-tag" id="panel0Tag">🏢 The Basics</span>
+            <h3 id="panel0Title">A Giant Computer Building</h3>
+            <p id="panel0Text">A data center is a building full of computers called <span class="signal-box purple">servers</span>. They store your photos, run your apps, and keep the internet working.</p>
+            <div class="inline-check" id="ic1">
+              <span class="ic-q" id="ic1Question">🤔 Which of these is <em>not</em> in a data center?</span>
+              <button class="ic-btn" id="ic1Btn0" data-ic="1" data-correct="false">🖥️ Servers</button>
+              <button class="ic-btn" id="ic1Btn1" data-ic="1" data-correct="true">🌳 Trees</button>
+              <button class="ic-btn" id="ic1Btn2" data-ic="1" data-correct="false">🔋 Backup batteries</button>
+              <span class="ic-fb" id="icFb1"></span>
+            </div>
+            <span class="audio-badge" id="badge-data-center-basics">🔊 Auto-narrated</span>
+          </div>
+          <div class="h-panel-num-side">
+            <div class="h-panel-big-num">01</div>
+            <svg class="h-panel-icon-big" width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="14" y="6" width="36" height="52" rx="4" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+              <rect x="20" y="14" width="24" height="6" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+              <rect x="20" y="26" width="24" height="6" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+              <rect x="20" y="38" width="24" height="6" rx="1.5" fill="rgba(255,255,255,0.7)"/>
+              <circle cx="24" cy="17" r="1.6" fill="#91C8A9"><animate attributeName="opacity" values="1;0.25;1" dur="1.4s" repeatCount="indefinite"/></circle>
+              <circle cx="24" cy="29" r="1.6" fill="#FDE688"><animate attributeName="opacity" values="0.25;1;0.25" dur="1.8s" repeatCount="indefinite"/></circle>
+              <circle cx="24" cy="41" r="1.6" fill="#91C8A9"><animate attributeName="opacity" values="1;0.3;1" dur="1.1s" repeatCount="indefinite"/></circle>
+            </svg>
+          </div>
+        </div>
+
+        <div class="h-panel" style="background:radial-gradient(ellipse 80% 60% at 25% 20%, #a3d6ff 0%, #77C0F7 60%, #5fa3d9 100%);" data-section="nepal-dcs">
+          <div class="blob" style="width:280px;height:280px;background:#91C8A9;top:-50px;right:-60px;"></div>
+          <span class="h-chapter-label" id="panel1ChapterLabel">Chapter 02 · Nepal's Data Centers</span>
+          <div class="h-panel-content">
+            <span class="h-panel-tag" id="panel1Tag">🇳🇵 Nepal</span>
+            <h3 id="panel1Title">Nepal Has Nine</h3>
+            <p id="panel1Text">Nepal has <span class="signal-box blue">9 data centers</span>. One of them is probably helping you right now — like when you check your bank balance or phone signal. <span class="signal-arrow">→ 8 in Kathmandu Valley, 1 in Butwal</span></p>
+            <span class="audio-badge" id="badge-nepal-dcs">🔊 Auto-narrated</span>
+          </div>
+          <div class="h-panel-num-side">
+            <div class="h-panel-big-num">02</div>
+            <svg class="h-panel-icon-big" width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 38 L16 24 L26 30 L34 18 L46 22 L58 34 L52 44 L40 40 L28 48 L16 46 Z" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/>
+              <g fill="#FDE688">
+                <circle cx="34" cy="28" r="2"/><circle cx="38" cy="26" r="2"/><circle cx="36" cy="31" r="2"/><circle cx="40" cy="30" r="2"/>
+                <circle cx="33" cy="32" r="2"/><circle cx="37" cy="34" r="2"/><circle cx="41" cy="33" r="2"/><circle cx="35" cy="36" r="2"/>
+              </g>
+              <circle cx="17" cy="41" r="2.4" fill="#FDC9B4"/>
+              <text x="36" y="20" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="6" font-weight="700" font-family="sans-serif">KTM</text>
+              <text x="17" y="49" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="5.5" font-weight="700" font-family="sans-serif">Butwal</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="h-panel" style="background:radial-gradient(ellipse 80% 60% at 20% 25%, #b6dec5 0%, #91C8A9 60%, #74ab8c 100%);" data-section="always-on">
+          <div class="blob" style="width:260px;height:260px;background:#FDE688;top:-50px;left:-50px;"></div>
+          <span class="h-chapter-label" id="panel2ChapterLabel">Chapter 03 · Always On</span>
+          <div class="h-panel-content">
+            <span class="h-panel-tag" id="panel2Tag">⏰ 24/7</span>
+            <h3 id="panel2Title">Always Awake</h3>
+            <p id="panel2Text">Data centers run <span class="signal-box green">24/7</span>. They use as much power as <span class="signal-box peach">128,000 homes</span> — and never stop, even while you sleep.</p>
+            <span class="audio-badge" id="badge-always-on">🔊 Auto-narrated</span>
+          </div>
+          <div class="h-panel-num-side">
+            <div class="h-panel-big-num">03</div>
+            <svg class="h-panel-icon-big" width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="24" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+              <line x1="32" y1="32" x2="32" y2="16" stroke="rgba(255,255,255,0.9)" stroke-width="2.5" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="6s" repeatCount="indefinite"/>
+              </line>
+              <line x1="32" y1="32" x2="44" y2="32" stroke="rgba(255,255,255,0.65)" stroke-width="2" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="1.5s" repeatCount="indefinite"/>
+              </line>
+              <circle cx="32" cy="32" r="2" fill="#fff"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel-dots" id="panelDots">
+        <span class="panel-dot active" style="background:rgba(255,254,249,0.9);"></span>
+        <span class="panel-dot" style="background:rgba(255,254,249,0.3);"></span>
+        <span class="panel-dot" style="background:rgba(255,254,249,0.3);"></span>
+      </div>
+      <div id="hArrow">›</div>
+    </div>
+  </div>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider invert"></div>
+
+  <!-- GUIDE: power prediction (silent) -->
+  <div class="guide-band on-dark" style="background:linear-gradient(180deg, #f1e9fa 0%, #c9b8e6 42%, #AF9ED7 100%); --guide-accent:175,158,215;" data-section="silent">
+    <div class="guide-band-blob" aria-hidden="true" style="width:260px;height:260px;bottom:-80px;left:-60px;"></div>
+    <div class="guide-card">
+      <div class="guide-avatar-wrap">
+        <svg class="guide-avatar" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="21" fill="#FDC9B4"/>
+          <circle cx="15" cy="20" r="3" fill="#fff"/>
+          <circle cx="29" cy="20" r="3" fill="#fff"/>
+          <path d="M14 27 Q22 24 30 27" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="22" y1="8" x2="22" y2="12" stroke="#FDE688" stroke-width="2"/>
+          <circle cx="22" cy="6" r="2.5" fill="#FDE688"/>
+        </svg>
+      </div>
+      <div class="guide-bubble">
+        <p id="guidePowerText">⚡ <strong>Make a prediction:</strong> How many homes' worth of electricity do you think Nepal's 9 data centers burn through?</p>
+        <div class="guide-predict-input" id="guidePowerPredict" data-answer-label="~128,000 homes">
+          <button class="guide-predict-btn" data-correct="false">~1,000 homes</button>
+          <button class="guide-predict-btn" data-correct="false">~12,000 homes</button>
+          <button class="guide-predict-btn" data-correct="true">~128,000 homes</button>
+          <button class="guide-predict-btn" data-correct="false">~1,000,000 homes</button>
+        </div>
+        <p class="guide-predict-reveal"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: POWER -->
+  <div class="section-wrap" id="wrap3" data-section="power-bars">
+    <div class="section-sticky" style="background:radial-gradient(ellipse 90% 70% at 70% 25%, #c4b8e6 0%, #AF9ED7 55%, #9c8cc9 100%);align-items:center;justify-content:center;">
+      <span class="section-chapter-label" id="powerChapterLabel">Chapter 04 · Power &amp; Energy</span>
+      <div class="power-section-inner">
+        <div class="parallax-wm" id="powerWm" style="font-size:20rem;right:-4rem;bottom:-4rem;">⚡</div>
+        <svg class="power-wm" width="320" height="420" viewBox="0 0 100 130"><polygon points="55,5 20,60 48,60 45,125 80,50 52,50" fill="white"/></svg>
+        <div class="power-display">
+          <h3 id="powerTitle">How Much Power?</h3>
+          <p class="sub" id="powerSub">Compare data centers to places you know</p>
+          <div class="bar-row">
+            <span class="bar-label" id="barLabel1">15+ MW<br><small>Nepal's 9 DCs</small></span>
+            <div class="bar-track"><div class="bar-fill" id="bar1" style="background:linear-gradient(90deg,#FDE688,#FDC9B4);"></div></div>
+            <span class="bar-val" id="barVal1">128,000 homes</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" id="barLabel2">~9.3 MW<br><small>Biratnagar</small></span>
+            <div class="bar-track"><div class="bar-fill" id="bar2" style="background:linear-gradient(90deg,#77C0F7,#91C8A9);"></div></div>
+            <span class="bar-val" id="barVal2">Industrial town</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" id="barLabel3">~3 MW<br><small>Dhangadhi</small></span>
+            <div class="bar-track"><div class="bar-fill" id="bar3" style="background:linear-gradient(90deg,#91C8A9,#AF9ED7);"></div></div>
+            <span class="bar-val" id="barVal3">Province capital</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" id="barLabel4">~1.3 MW<br><small>One rack row</small></span>
+            <div class="bar-track"><div class="bar-fill" id="bar4" style="background:linear-gradient(90deg,#FDC9B4,#FDE688);"></div></div>
+            <span class="bar-val" id="barVal4">~700 homes</span>
+          </div>
+          <span class="audio-badge" id="badge-power-bars" style="margin-top:1.2rem;">🔊 Auto-narrated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- GUIDE: water prediction (silent) -->
+  <div class="guide-band" style="background:linear-gradient(180deg, #b9a8dd 0%, #cfe0f5 32%, #eaf6ff 100%); --guide-accent:119,192,247;" data-section="silent">
+    <div class="guide-band-blob" aria-hidden="true" style="width:240px;height:240px;top:-70px;right:-50px;"></div>
+    <div class="guide-card">
+      <div class="guide-avatar-wrap">
+        <svg class="guide-avatar" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="21" fill="#91C8A9"/>
+          <circle cx="15" cy="20" r="3" fill="#fff"/>
+          <circle cx="29" cy="20" r="3" fill="#fff"/>
+          <path d="M14 28 Q22 34 30 28" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="22" y1="8" x2="22" y2="12" stroke="#FDE688" stroke-width="2"/>
+          <circle cx="22" cy="6" r="2.5" fill="#FDE688"/>
+        </svg>
+      </div>
+      <div class="guide-bubble">
+        <p id="guideWaterText">💧 <strong>Make a prediction:</strong> How much water do you think Nepal's 9 data centers use in a year?</p>
+        <div class="guide-predict-input" id="guideWaterPredict" data-answer-label="About 90 pools">
+          <button class="guide-predict-btn" data-correct="false">A swimming pool</button>
+          <button class="guide-predict-btn" data-correct="true">About 90 pools</button>
+          <button class="guide-predict-btn" data-correct="false">Thousands of pools</button>
+        </div>
+        <p class="guide-predict-reveal"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: WATER -->
+  <section id="wrap4" data-section="water-usage">
+    <div class="water-left">
+      <svg class="water-drop-icon" width="52" height="68" viewBox="0 0 52 68">
+        <path d="M26 4 C26 4 4 30 4 44 C4 56.15 13.85 66 26 66 C38.15 66 48 56.15 48 44 C48 30 26 4 26 4Z" fill="#77C0F7" opacity="0.85"/>
+        <ellipse cx="34" cy="36" rx="5" ry="8" fill="white" opacity="0.3" transform="rotate(-30 34 36)"/>
+      </svg>
+      <h3 class="reveal-up" id="waterTitle">Water Usage</h3>
+      <p class="reveal-up" id="waterDesc" style="color:#5a5468;margin-bottom:1.2rem;max-width:360px;line-height:1.6;">Cooling servers uses a lot of water — every day. Nepal's data centers draw from the same underground water as Kathmandu residents.</p>
+      <div class="water-stat" id="waterStat">0</div>
+      <p class="water-label" id="waterLabel">litres per year across Nepal's 9 data centers</p>
+      <span class="audio-badge" id="badge-water-usage" style="margin-top:1rem;">🔊 Auto-narrated</span>
+    </div>
+    <div class="water-right">
+      <div class="water-stat-bg" aria-hidden="true">💧</div>
+      <div class="glass-light" style="border-radius:32px;padding:2rem 1.5rem;position:relative;z-index:1;">
+        <svg width="220" height="260" viewBox="0 0 240 280" style="display:block;filter:drop-shadow(0 12px 32px rgba(119,192,247,0.3));animation:dropBob 3s ease-in-out infinite alternate;">
+          <path d="M120 20 C120 20 20 100 20 165 C20 217 66 258 120 258 C174 258 220 217 220 165 C220 100 120 20 120 20Z" fill="#77C0F7" opacity="0.22"/>
+          <path d="M120 20 C120 20 20 100 20 165 C20 217 66 258 120 258 C174 258 220 217 220 165 C220 100 120 20 120 20Z" fill="none" stroke="#77C0F7" stroke-width="2.5" opacity="0.6"/>
+          <text x="120" y="175" text-anchor="middle" fill="#3a6a8a" font-size="42" font-weight="900" font-family="sans-serif" opacity="0.7" id="waterRightMain">9 DCs</text>
+          <text x="120" y="210" text-anchor="middle" fill="#3a6a8a" font-size="14" font-weight="600" font-family="sans-serif" opacity="0.55" id="waterRightSub">data centers</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider invert"></div>
+
+  <!-- SECTION 5: JOURNEY -->
+  <div class="section-wrap" id="wrap5" data-section="message-journey">
+    <div class="section-sticky" style="background:radial-gradient(ellipse 90% 70% at 20% 20%, #a3d6ff 0%, #77C0F7 55%, #5fa3d9 100%);align-items:stretch;justify-content:flex-start;">
+      <div class="journey-split">
+        <div class="journey-steps-col">
+          <h3 class="reveal-up" id="journeyTitle">Your Message's Journey</h3>
+          <p class="sub reveal-up" id="journeySub">What happens when you send a message</p>
+          <div class="j-step" data-step="0" id="jStep0">
+            <div class="j-step-dot" id="jStepIcon0">📱</div>
+            <div class="j-step-text"><div class="j-step-name" id="jStepName0">Your Phone</div></div>
+          </div>
+          <div class="j-step-connector" id="jConn0"></div>
+          <div class="j-step" data-step="1" id="jStep1">
+            <div class="j-step-dot" id="jStepIcon1">📡</div>
+            <div class="j-step-text"><div class="j-step-name" id="jStepName1">Cell Tower</div></div>
+          </div>
+          <div class="j-step-connector" id="jConn1"></div>
+          <div class="j-step" data-step="2" id="jStep2">
+            <div class="j-step-dot" id="jStepIcon2">🏢</div>
+            <div class="j-step-text"><div class="j-step-name" id="jStepName2">Data Center</div></div>
+          </div>
+          <div class="j-step-connector" id="jConn2"></div>
+          <div class="j-step" data-step="3" id="jStep3">
+            <div class="j-step-dot" id="jStepIcon3">👤</div>
+            <div class="j-step-text"><div class="j-step-name" id="jStepName3">Your Friend</div></div>
+          </div>
+          <div class="j-pulse-track" style="margin-top:2rem;width:80%;"><div class="j-pulse-dot" id="jPulseDot"></div></div>
+          <span class="audio-badge" id="badge-message-journey" style="margin-top:1rem;">🔊 Auto-narrated</span>
+        </div>
+        <div class="journey-desc-col">
+          <div class="j-desc-bg-num" id="jDescBgNum">1</div>
+          <p class="j-big-desc" id="jDesc">Your message starts on your phone...</p>
+          <p class="j-speed" id="jSpeed">All of this happens in under <strong>100 milliseconds</strong> — faster than you can blink.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- SECTION 6: E-WASTE -->
+  <section id="wrap6" data-section="ewaste">
+    <div class="ewaste-display">
+      <h3 class="reveal-up" id="ewasteTitle">♻️ Electronic Waste</h3>
+      <p class="reveal-up" id="ewasteSub">Servers only last a few years — then they get thrown away</p>
+      <div class="ewaste-timeline" id="ewasteTimeline">
+        <div class="ewaste-row" data-stage="0" id="ewasteRow0">
+          <div class="icon-wrap" id="ewasteIcon0" style="background:#91C8A9;color:white;">🆕</div>
+          <div class="info-wrap"><div class="label" id="ewasteLabel0">Fresh &amp; Fast</div><div class="desc" id="ewasteDesc0">New servers, running at full speed</div></div>
+          <span class="year-badge" id="ewasteYear0">Year 1</span>
+        </div>
+        <div class="ewaste-arrow-down">↓</div>
+        <div class="ewaste-row" data-stage="1" id="ewasteRow1">
+          <div class="icon-wrap" id="ewasteIcon1" style="background:#77C0F7;color:white;">⚙️</div>
+          <div class="info-wrap"><div class="label" id="ewasteLabel1">Hard at Work</div><div class="desc" id="ewasteDesc1">Running non-stop, cooling systems working hard</div></div>
+          <span class="year-badge" id="ewasteYear1">Years 2–3</span>
+        </div>
+        <div class="ewaste-arrow-down">↓</div>
+        <div class="ewaste-row" data-stage="2" id="ewasteRow2">
+          <div class="icon-wrap" id="ewasteIcon2" style="background:#AF9ED7;color:white;">🕰️</div>
+          <div class="info-wrap"><div class="label" id="ewasteLabel2">Slowing Down</div><div class="desc" id="ewasteDesc2">Parts wear out and run less efficiently</div></div>
+          <span class="year-badge" id="ewasteYear2">Years 4–5</span>
+        </div>
+        <div class="ewaste-arrow-down">↓</div>
+        <div class="ewaste-row" data-stage="3" id="ewasteRow3">
+          <div class="icon-wrap" id="ewasteIcon3" style="background:#FDC9B4;color:#5a3a3a;">🗑️</div>
+          <div class="info-wrap"><div class="label" id="ewasteLabel3">Thrown Away</div><div class="desc" id="ewasteDesc3">Taken out of service — no longer useful</div></div>
+          <span class="year-badge" id="ewasteYear3">⏳ End</span>
+        </div>
+      </div>
+      <div class="ewaste-final-note">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c87961" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <circle cx="12" cy="16" r="0.5" fill="#c87961"/>
+        </svg>
+        <span id="ewasteFinalNote"><strong>⚠️ Toxic Danger!</strong> Old servers contain <strong>lead, mercury, and other toxic metals</strong>. Nepal has no formal recycling system, so they often end up in landfills or get burned — poisoning soil, water, and people.</span>
+      </div>
+      <span class="audio-badge" id="badge-ewaste" style="margin-top:1rem;">🔊 Auto-narrated</span>
+    </div>
+  </section>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider invert"></div>
+
+  <!-- SECTION 7: FLIP CARDS -->
+  <div class="section-wrap" id="wrap7" data-section="flip-facts">
+    <div class="section-sticky" style="background:radial-gradient(ellipse 90% 70% at 75% 25%, #b6dec5 0%, #91C8A9 55%, #74ab8c 100%);align-items:center;justify-content:center;">
+      <span class="section-chapter-label" id="flipChapterLabel">Chapter 07 · Did You Know</span>
+      <div class="parallax-wm" id="flipWm" style="font-size:18rem;left:-2rem;bottom:-3rem;">❓</div>
+      <div class="flip-display">
+        <h3 class="reveal-up" id="flipTitle">Did You Know?</h3>
+        <p class="reveal-up" id="flipSub" style="color:rgba(255,254,249,0.8);margin-bottom:1rem;">Tap the card to flip it</p>
+        <div class="flip-card" id="flipCard">
+          <div class="flip-inner" id="flipInner">
+            <div class="flip-front">
+              <div class="flip-qmarks">
+                <span style="top:5px;left:10px;">?</span>
+                <span style="top:5px;right:10px;font-size:3.5rem;">?</span>
+                <span style="bottom:5px;left:30px;font-size:3rem;">?</span>
+                <span style="bottom:10px;right:20px;font-size:6rem;">?</span>
+              </div>
+              <h4 id="ffTitle">They Get Really Hot</h4>
+            </div>
+            <div class="flip-back">
+              <h4 id="fbTitle">They Get Really Hot</h4>
+              <p id="fbText">Cooling is a huge challenge for engineers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-dots" id="flipDots">
+          <span class="flip-dot current" style="background:rgba(255,254,249,0.9);"></span>
+          <span class="flip-dot" style="background:rgba(255,254,249,0.3);"></span>
+          <span class="flip-dot" style="background:rgba(255,254,249,0.3);"></span>
+          <span class="flip-dot" style="background:rgba(255,254,249,0.3);"></span>
+        </div>
+        <span class="audio-badge" id="badge-flip-facts" style="margin-top:1rem;">🔊 Auto-narrated</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- 3D MODEL (silent) -->
+  <section class="dc3d-section" data-section="silent">
+    <div class="dc3d-blob"></div>
+    <div class="dc3d-blob"></div>
+    <div class="dc3d-header reveal-up">
+      <h2 id="dc3dTitle">🔍 Inside a Data Center</h2>
+      <p id="dc3dSub">Drag to rotate · Scroll to zoom · Click any part to inspect it</p>
+    </div>
+    <div id="dc3d-wrap">
+      <div style="background:#0d1117;padding:10px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.07);">
+        <span id="dc3dTopbarLabel0" style="font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#77C0F7;">Data Center</span>
+        <span class="dc3d-topbar-optional" style="width:4px;height:4px;border-radius:50%;background:#334155;"></span>
+        <span class="dc3d-topbar-optional" id="dc3dTopbarLabel1" style="font-size:.72rem;color:#64748b;">3D Interactive Model</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#334155;"></span>
+        <span id="dc3dTopbarLabel2" style="font-size:.72rem;color:#64748b;">Click to inspect</span>
+        <button id="dc3d-fullscreen" type="button" aria-label="View 3D model fullscreen" title="View fullscreen" style="margin-left:auto;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#cbd5e1;font-family:sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.02em;padding:6px 12px;border-radius:8px;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease;">
+          <svg id="dc3d-fs-icon-expand" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          <svg id="dc3d-fs-icon-collapse" style="display:none;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/></svg>
+          <span id="dc3d-fullscreen-label">Fullscreen</span>
+        </button>
+      </div>
+      <canvas id="dc3d-canvas"></canvas>
+      <div id="dc3d-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0d1117;color:#64748b;font-size:.85rem;font-family:sans-serif;letter-spacing:.06em;pointer-events:none;z-index:10;">Loading 3D scene…</div>
+      <div id="dc3d-panel">
+        <button id="dc3d-close" style="position:absolute;top:.8rem;right:.8rem;background:rgba(255,255,255,0.07);border:none;color:#94a3b8;width:26px;height:26px;border-radius:6px;cursor:pointer;font-size:.9rem;">✕</button>
+        <div id="dc3d-swatch" style="width:32px;height:32px;border-radius:7px;margin-bottom:.9rem;"></div>
+        <div id="dc3d-label" style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b;"></div>
+        <div id="dc3d-name" style="font-size:1.05rem;font-weight:800;color:#f1f5f9;margin-bottom:.75rem;"></div>
+        <div id="dc3d-desc" style="font-size:.82rem;color:#94a3b8;line-height:1.7;margin-bottom:1rem;"></div>
+        <div id="dc3d-specs"></div>
+      </div>
+      <div id="dc3d-tooltip"></div>
+    </div>
+    <div id="dc3d-pills" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:900px;margin:1rem auto 0;padding:0 0.5rem;"></div>
+  </section>
+
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider invert"></div>
+
+  <!-- MAP -->
+  <section class="map-section" data-section="map-location">
+    <div class="map-text-col reveal-up">
+      <span class="map-chapter-label" id="mapChapterLabel">Chapter 08 · Location</span>
+      <h3 id="mapTitle">Where Are They?</h3>
+      <p id="mapDesc1" style="color:#5a5468;margin:.5rem 0 1.2rem;max-width:320px;line-height:1.6;">8 sit in Kathmandu, 1 in Butwal — nearly all in one city.</p>
+      <p id="mapDesc2" style="color:#7a7288;font-size:.88rem;line-height:1.6;max-width:300px;">Tap the dots on the map to learn more.</p>
+      <span class="audio-badge" id="badge-map-location" style="margin-top:1rem;">🔊 Auto-narrated</span>
+    </div>
+    <div class="map-container"><div id="nepalMap"></div></div>
+  </section>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- GUIDE: before quiz (silent) -->
+  <div class="guide-band" style="background:linear-gradient(180deg, #e6dcf7 0%, #fff3c2 100%); --guide-accent:175,158,215;" data-section="silent">
+    <div class="guide-band-blob" aria-hidden="true" style="width:250px;height:250px;bottom:-70px;right:-50px;"></div>
+    <div class="guide-card">
+      <div class="guide-avatar-wrap">
+        <svg class="guide-avatar" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="22" cy="22" r="21" fill="#AF9ED7"/>
+          <circle cx="15" cy="20" r="3" fill="#fff"/>
+          <circle cx="29" cy="20" r="3" fill="#fff"/>
+          <path d="M14 27 Q22 33 30 27" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="22" y1="8" x2="22" y2="12" stroke="#FDE688" stroke-width="2"/>
+          <circle cx="22" cy="6" r="2.5" fill="#FDE688"/>
+        </svg>
+      </div>
+      <div class="guide-bubble">
+        <p id="guideQuizText">🧠 You made it through! Let's see what stuck — I'll walk you through every answer. Ready?</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ (silent) -->
+  <section class="quiz-section" data-section="silent">
+    <div class="quiz-text-col reveal-up">
+      <h2><span id="quizTitleLine1">Quick</span><br><span id="quizTitleLine2">Quiz</span></h2>
+      <p id="quizIntroText">Five quick questions about data centers in Nepal.</p>
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem;">
+        <div style="display:flex;align-items:center;gap:.6rem;"><span id="quizFeatureIcon0" style="width:28px;height:28px;border-radius:50%;background:rgba(58,53,72,0.1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;box-shadow:0 3px 8px -2px rgba(58,53,72,0.18),inset 0 1px 0 rgba(255,255,255,0.5);">5</span><span id="quizFeatureText0" style="font-size:.9rem;color:#5a5468;">questions</span></div>
+        <div style="display:flex;align-items:center;gap:.6rem;"><span id="quizFeatureIcon1" style="width:28px;height:28px;border-radius:50%;background:rgba(58,53,72,0.1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;box-shadow:0 3px 8px -2px rgba(58,53,72,0.18),inset 0 1px 0 rgba(255,255,255,0.5);">⚡</span><span id="quizFeatureText1" style="font-size:.9rem;color:#5a5468;">instant answers</span></div>
+        <div style="display:flex;align-items:center;gap:.6rem;"><span id="quizFeatureIcon2" style="width:28px;height:28px;border-radius:50%;background:rgba(58,53,72,0.1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;box-shadow:0 3px 8px -2px rgba(58,53,72,0.18),inset 0 1px 0 rgba(255,255,255,0.5);">🎉</span><span id="quizFeatureText2" style="font-size:.9rem;color:#5a5468;">a little celebration when you're right</span></div>
+      </div>
+    </div>
+    <div class="quiz-card-col">
+      <div class="quiz-card">
+        <p id="quizProgress" style="color:#AF9ED7;font-weight:700;margin:.0rem 0 .6rem;font-size:.85rem;">Question 1 of 5</p>
+        <p id="quizQuestion" style="color:#5a5468;margin:.6rem 0;font-weight:600;min-height:48px;font-size:1rem;"></p>
+        <div id="quizBtns"></div>
+        <p id="quizFb" style="font-weight:700;margin-top:12px;min-height:28px;font-size:.9rem;"></p>
+        <p id="quizScore" style="font-weight:700;color:#AF9ED7;font-size:.9rem;">Score: 0/5</p>
+        <button id="nextBtn" style="display:none;margin-top:10px;background:transparent;border:2px solid #FDC9B4;color:#3a3548;padding:6px 18px;border-radius:20px;cursor:pointer;font-weight:700;font-size:.9rem;">Next Question →</button>
+        <button id="retryBtn" style="display:none;margin-top:8px;background:transparent;border:2px solid #91C8A9;color:#3a3548;padding:6px 16px;border-radius:20px;cursor:pointer;font-weight:700;" onclick="startQuiz()">Try Again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (silent) -->
+  <section class="footer" data-section="silent"><p id="footerText">2026 · Built with active learning principles: Multimedia · Contiguity · Coherence · Personalization · Embodiment · Pretraining</p></section>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

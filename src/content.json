@@ -1,0 +1,321 @@
+{
+  "meta": {
+    "title": "Where Does the Internet Live? | Nepal · Enhanced Learning"
+  },
+
+  "narration": {
+    "sectionLabels": {
+      "data-center-basics": "Data Center Basics",
+      "nepal-dcs": "Nepal's Data Centers",
+      "always-on": "Always On",
+      "power-bars": "Power Usage",
+      "water-usage": "Water Usage",
+      "message-journey": "Message Journey",
+      "ewaste": "E-Waste",
+      "flip-facts": "Did You Know?",
+      "map-location": "Map Location"
+    },
+    "sectionText": {
+      "data-center-basics": "A data center is a building full of computers called servers. They store your photos, run your apps, and keep the internet working.",
+      "nepal-dcs": "Nepal has 9 data centers. 8 are in the Kathmandu Valley, and 1 is in Butwal. One of them is probably helping you right now, like when you check your bank balance or phone signal.",
+      "always-on": "Data centers run all day and all night, every day. They never stop. They use as much power as 128,000 homes — even while you sleep.",
+      "power-bars": "Nepal's 9 data centers use over 15 megawatts of power — enough for 128,000 homes. That is more than the whole city of Biratnagar uses, and five times what Dhangadhi uses. Just one row of server racks uses as much power as about 700 homes.",
+      "water-usage": "Data centers use water to keep their servers cool. Nepal's 9 data centers use about 230 million litres of water every year — about 90 Olympic swimming pools. This is the same underground water that people in Kathmandu drink.",
+      "message-journey": "When you send a message, it travels from your phone to a cell tower, then to a data center, and then to your friend. All of this happens in under 100 milliseconds — faster than you can blink.",
+      "ewaste": "Servers only last a few years. After that, they become electronic waste, or \"e-waste.\" Old servers have toxic metals inside, like lead and mercury. Nepal has no official way to recycle them, so they often end up in landfills or get burned — which harms the environment.",
+      "flip-facts": "Data centers get very hot, so keeping them cool is a big challenge. They are also very secure, with fingerprint scanners and fences. Nepal's cool mountain weather actually helps keep them cool naturally. And they use millions of litres of water every day just to stay cool.",
+      "map-location": "8 data centers are in the Kathmandu Valley, and 1 is in Butwal. Most of them are grouped together in the capital, handling most of Nepal's internet traffic."
+    }
+  },
+
+  "intro": {
+    "chapterLabel": "Chapter 001 · Introduction",
+    "titleLine1": "Where Does",
+    "titleLine2": "the Internet",
+    "titleBleed": "Live?",
+    "subtitle": "A look inside the buildings that power the internet — and what that means for Nepal.",
+    "badges": ["📘 Active learning", "🧠 Key terms"],
+    "pills": [
+      "🖥 Servers",
+      "⚡ 15+ MW",
+      "🏔 Nepal",
+      "🌐 9 Data Centers",
+      "💧 Cooling"
+    ]
+  },
+
+  "guides": {
+    "welcome": "👋 I'm your guide. This page can <strong>read itself aloud</strong> as you scroll. Listen to each section, or turn it off anytime with the button in the corner. Try it!",
+    "powerPrediction": {
+      "text": "⚡ <strong>Make a prediction:</strong> How many homes' worth of electricity do you think Nepal's 9 data centers burn through?",
+      "answerLabel": "~128,000 homes",
+      "options": [
+        { "text": "~1,000 homes", "correct": false },
+        { "text": "~12,000 homes", "correct": false },
+        { "text": "~128,000 homes", "correct": true },
+        { "text": "~1,000,000 homes", "correct": false }
+      ]
+    },
+    "waterPrediction": {
+      "text": "💧 <strong>Make a prediction:</strong> How much water do you think Nepal's 9 data centers use in a year?",
+      "answerLabel": "About 90 pools",
+      "options": [
+        { "text": "A swimming pool", "correct": false },
+        { "text": "About 90 pools", "correct": true },
+        { "text": "Thousands of pools", "correct": false }
+      ]
+    },
+    "quizIntro": "🧠 You made it through! Let's see what stuck — I'll walk you through every answer. Ready?"
+  },
+
+  "predictFeedback": {
+    "~1,000 homes": "Way off — it's actually about <strong>128,000 homes</strong>.",
+    "~12,000 homes": "Good instinct, but still low — it's about <strong>128,000 homes</strong>.",
+    "~128,000 homes": "Yep, nailed it! About <strong>128,000 homes</strong>.",
+    "~1,000,000 homes": "Close, but a bit high — it's about <strong>128,000 homes</strong>.",
+    "A swimming pool": "Nope, way more than that — about <strong>230 million litres a year</strong>, roughly 90 pools.",
+    "About 90 pools": "Exactly right! About <strong>230 million litres a year</strong> — around 90 Olympic-size pools.",
+    "Thousands of pools": "A little high — it's about <strong>230 million litres a year</strong>, roughly 90 pools."
+  },
+
+  "pretrain": {
+    "label": "🧠 Pretraining",
+    "title": "Key Terms to Know",
+    "sub": "Learn these words before we dive in — they'll help you build a mental model of how data centers work.",
+    "terms": [
+      { "icon": "🖥️", "term": "Data Center", "def": "A building full of computers (servers) that store data and run apps.", "hint": "Think: \"a hotel for the internet\"" },
+      { "icon": "⚡", "term": "UPS", "def": "Uninterruptible Power Supply — a battery that keeps servers running during power cuts.", "hint": "Bridges the gap before generators start" },
+      { "icon": "💧", "term": "CRAC", "def": "Computer Room Air Conditioning — cools the servers so they don't overheat.", "hint": "Uses water or refrigerant to remove heat" },
+      { "icon": "🔋", "term": "Generator", "def": "A diesel engine that provides power during longer outages.", "hint": "Can run for days if refueled" },
+      { "icon": "🌐", "term": "Bandwidth", "def": "The amount of data that can move through a network connection at once.", "hint": "Like lanes on a highway" },
+      { "icon": "♻️", "term": "E-waste", "def": "Discarded electronic equipment that contains toxic materials.", "hint": "Old servers become e-waste" }
+    ]
+  },
+
+  "panels": [
+    {
+      "chapterLabel": "Chapter 01 · What Is a Data Center",
+      "tag": "🏢 The Basics",
+      "title": "A Giant Computer Building",
+      "textHtml": "A data center is a building full of computers called <span class=\"signal-box purple\">servers</span>. They store your photos, run your apps, and keep the internet working.",
+      "check": {
+        "question": "🤔 Which of these is <em>not</em> in a data center?",
+        "options": [
+          { "text": "🖥️ Servers", "correct": false },
+          { "text": "🌳 Trees", "correct": true },
+          { "text": "🔋 Backup batteries", "correct": false }
+        ],
+        "wrongFeedback": "❌ Not quite. Think about what's inside a data center."
+      }
+    },
+    {
+      "chapterLabel": "Chapter 02 · Nepal's Data Centers",
+      "tag": "🇳🇵 Nepal",
+      "title": "Nepal Has Nine",
+      "textHtml": "Nepal has <span class=\"signal-box blue\">9 data centers</span>. One of them is probably helping you right now — like when you check your bank balance or phone signal. <span class=\"signal-arrow\">→ 8 in Kathmandu Valley, 1 in Butwal</span>"
+    },
+    {
+      "chapterLabel": "Chapter 03 · Always On",
+      "tag": "⏰ 24/7",
+      "title": "Always Awake",
+      "textHtml": "Data centers run <span class=\"signal-box green\">24/7</span>. They use as much power as <span class=\"signal-box peach\">128,000 homes</span> — and never stop, even while you sleep."
+    }
+  ],
+
+  "power": {
+    "chapterLabel": "Chapter 04 · Power &amp; Energy",
+    "title": "How Much Power?",
+    "sub": "Compare data centers to places you know",
+    "bars": [
+      { "labelMain": "15+ MW", "labelSmall": "Nepal's 9 DCs", "val": "128,000 homes", "max": 100 },
+      { "labelMain": "~9.3 MW", "labelSmall": "Biratnagar", "val": "Industrial town", "max": 62 },
+      { "labelMain": "~3 MW", "labelSmall": "Dhangadhi", "val": "Province capital", "max": 20 },
+      { "labelMain": "~1.3 MW", "labelSmall": "One rack row", "val": "~700 homes", "max": 9 }
+    ]
+  },
+
+  "water": {
+    "title": "Water Usage",
+    "desc": "Cooling servers uses a lot of water — every day. Nepal's data centers draw from the same underground water as Kathmandu residents.",
+    "statLabel": "litres per year across Nepal's 9 data centers",
+    "target": 230000000,
+    "rightMain": "9 DCs",
+    "rightSub": "data centers"
+  },
+
+  "journey": {
+    "title": "Your Message's Journey",
+    "sub": "What happens when you send a message",
+    "steps": [
+      { "icon": "📱", "name": "Your Phone" },
+      { "icon": "📡", "name": "Cell Tower" },
+      { "icon": "🏢", "name": "Data Center" },
+      { "icon": "👤", "name": "Your Friend" }
+    ],
+    "descs": [
+      "Your message starts on your phone.",
+      "It travels as radio waves to a cell tower.",
+      "The tower sends it to a data center in Kathmandu.",
+      "The data center delivers it to your friend."
+    ],
+    "initialDesc": "Your message starts on your phone...",
+    "speedTextHtml": "All of this happens in under <strong>100 milliseconds</strong> — faster than you can blink."
+  },
+
+  "ewaste": {
+    "title": "♻️ Electronic Waste",
+    "sub": "Servers only last a few years — then they get thrown away",
+    "rows": [
+      { "icon": "🆕", "iconBg": "#91C8A9", "iconColor": "white", "label": "Fresh &amp; Fast", "desc": "New servers, running at full speed", "year": "Year 1" },
+      { "icon": "⚙️", "iconBg": "#77C0F7", "iconColor": "white", "label": "Hard at Work", "desc": "Running non-stop, cooling systems working hard", "year": "Years 2–3" },
+      { "icon": "🕰️", "iconBg": "#AF9ED7", "iconColor": "white", "label": "Slowing Down", "desc": "Parts wear out and run less efficiently", "year": "Years 4–5" },
+      { "icon": "🗑️", "iconBg": "#FDC9B4", "iconColor": "#5a3a3a", "label": "Thrown Away", "desc": "Taken out of service — no longer useful", "year": "⏳ End" }
+    ],
+    "finalNoteHtml": "<strong>⚠️ Toxic Danger!</strong> Old servers contain <strong>lead, mercury, and other toxic metals</strong>. Nepal has no formal recycling system, so they often end up in landfills or get burned — poisoning soil, water, and people."
+  },
+
+  "flip": {
+    "chapterLabel": "Chapter 07 · Did You Know",
+    "title": "Did You Know?",
+    "sub": "Tap the card to flip it",
+    "facts": [
+      { "title": "They Get Really Hot", "text": "Cooling is one of the biggest challenges." },
+      { "title": "Super Secure", "text": "Fingerprint scanners and tall fences protect your data." },
+      { "title": "Nepal Could Be Perfect", "text": "Cool mountain weather means natural air conditioning." },
+      { "title": "They Use Water Too", "text": "Millions of litres of water daily for cooling." }
+    ]
+  },
+
+  "dc3d": {
+    "title": "🔍 Inside a Data Center",
+    "sub": "Drag to rotate · Scroll to zoom · Click any part to inspect it",
+    "topbarLabels": ["Data Center", "3D Interactive Model", "Click to inspect"],
+    "fullscreenLabel": "Fullscreen",
+    "components": {
+      "server_rack": {
+        "label": "Server Rack",
+        "hex": "#77C0F7",
+        "desc": "A standard rack of servers that store and process data.",
+        "specs": [
+          { "k": "Units per rack", "v": "42U" },
+          { "k": "Power draw", "v": "5–10 kW" },
+          { "k": "Network speed", "v": "10–100 Gbps" }
+        ]
+      },
+      "cooling_unit": {
+        "label": "Cooling Unit (CRAC)",
+        "hex": "#91C8A9",
+        "desc": "Keeps the room at a safe temperature for the servers.",
+        "specs": [
+          { "k": "Capacity", "v": "20–60 kW" },
+          { "k": "Target temp", "v": "18–27°C" },
+          { "k": "Airflow", "v": "3,000–10,000 CFM" }
+        ]
+      },
+      "ups": {
+        "label": "UPS (Battery Backup)",
+        "hex": "#FDE688",
+        "desc": "A battery backup that kicks in the instant power cuts out.",
+        "specs": [
+          { "k": "Capacity", "v": "100–500 kVA" },
+          { "k": "Backup duration", "v": "10–15 minutes" }
+        ]
+      },
+      "generator": {
+        "label": "Diesel Generator",
+        "hex": "#C87961",
+        "desc": "A backup generator that keeps the lights on during longer outages.",
+        "specs": [
+          { "k": "Capacity", "v": "500 kW – 2 MW" },
+          { "k": "Start time", "v": "< 10 seconds" }
+        ]
+      },
+      "network_core": {
+        "label": "Network Core Switch",
+        "hex": "#AF9ED7",
+        "desc": "Connects every server rack together at high speed.",
+        "specs": [
+          { "k": "Throughput", "v": "100 Tbps+" },
+          { "k": "Latency", "v": "< 1 µs" }
+        ]
+      },
+      "pdu": {
+        "label": "Power Distribution Unit",
+        "hex": "#FFB347",
+        "desc": "Sends power from the UPS to each server rack.",
+        "specs": [
+          { "k": "Input voltage", "v": "208–415 V AC" },
+          { "k": "Outlets", "v": "24–48" }
+        ]
+      },
+      "fire_suppression": {
+        "label": "Fire Suppression",
+        "hex": "#FF8FAB",
+        "desc": "Puts out fires without damaging the equipment.",
+        "specs": [
+          { "k": "Agent", "v": "FM-200 / Novec 1230" },
+          { "k": "Response time", "v": "< 10 seconds" }
+        ]
+      },
+      "security_desk": {
+        "label": "Security & NOC Desk",
+        "hex": "#B0C4DE",
+        "desc": "Where staff watch over every system, all day and night.",
+        "specs": [
+          { "k": "Staffing", "v": "24/7/365" },
+          { "k": "Access control", "v": "Biometric + badge" }
+        ]
+      }
+    },
+    "layout": [
+      { "type": "server_rack", "positions": [[-6,-5],[-4,-5],[-2,-5],[0,-5],[-6,-3],[-4,-3],[-2,-3],[0,-3],[-6,1],[-4,1],[-2,1],[0,1],[-6,3],[-4,3],[-2,3],[0,3]] },
+      { "type": "cooling_unit", "positions": [[2,-5],[2,-3],[2,1],[2,3]] },
+      { "type": "ups", "positions": [[-9,-4],[-9,-2],[-9,0]] },
+      { "type": "generator", "positions": [[-9,5],[-6,5]] },
+      { "type": "network_core", "positions": [[4,-1]] },
+      { "type": "pdu", "positions": [[-1,-7],[2,-7],[5,-4],[5,2]] },
+      { "type": "fire_suppression", "positions": [[4,-6],[6,-6],[4,5],[6,5]] },
+      { "type": "security_desk", "positions": [[5,-1]] }
+    ]
+  },
+
+  "map": {
+    "chapterLabel": "Chapter 08 · Location",
+    "title": "Where Are They?",
+    "desc1": "8 sit in Kathmandu, 1 in Butwal — nearly all in one city.",
+    "desc2": "Tap the dots on the map to learn more.",
+    "center": { "lat": 27.7172, "lng": 85.3240, "zoom": 8 },
+    "markers": [
+      { "lat": 27.7172, "lng": 85.3240, "color": "#AF9ED7", "popup": "Kathmandu Valley — 8 data centers" },
+      { "lat": 27.7005, "lng": 83.4485, "color": "#FDC9B4", "popup": "Butwal — 1 data center" }
+    ],
+    "circle": { "lat": 27.7172, "lng": 85.3240, "radius": 28000, "color": "#AF9ED7" }
+  },
+
+  "quiz": {
+    "titleLine1": "Quick",
+    "titleLine2": "Quiz",
+    "intro": "Five quick questions about data centers in Nepal.",
+    "features": [
+      { "icon": "5", "text": "questions" },
+      { "icon": "⚡", "text": "instant answers" },
+      { "icon": "🎉", "text": "a little celebration when you're right" }
+    ],
+    "questions": [
+      { "q": "Nepal has 9 data centers. How many are in the Kathmandu Valley?", "opts": ["All 9", "8", "5", "3"], "correct": 1, "explain": "8 are in Kathmandu Valley, 1 in Butwal." },
+      { "q": "What is the main purpose of a UPS in a data center?", "opts": ["Cool the servers", "Provide instant power during outages", "Speed up the internet", "Store backup files"], "correct": 1, "explain": "A UPS bridges the gap between a power cut and generator start." },
+      { "q": "Why do data centers use so much water?", "opts": ["To clean the servers", "To cool the servers down", "To make electricity", "To fill fire sprinklers"], "correct": 1, "explain": "Cooling systems use millions of liters to keep servers from overheating." },
+      { "q": "How many Nepali homes' worth of power do Nepal's 9 data centers use?", "opts": ["1,000", "12,000", "128,000", "1,000,000"], "correct": 2, "explain": "They use enough power for about 128,000 homes." },
+      { "q": "Why is e-waste from data centers dangerous in Nepal?", "opts": ["It makes too much noise", "Servers contain toxic metals and there's no recycling", "Old servers slow down the internet", "They take up too much space"], "correct": 1, "explain": "Old servers contain toxic metals. Nepal lacks a formal recycling system." }
+    ],
+    "resultMessages": {
+      "high": "🎉 Amazing! You know your data centers!",
+      "mid": "👍 Good effort! Keep exploring!",
+      "low": "📚 Keep learning!"
+    }
+  },
+
+  "footer": {
+    "text": "2026 · Built with active learning principles: Multimedia · Contiguity · Coherence · Personalization · Embodiment · Pretraining"
+  }
+}
