@@ -18,7 +18,7 @@
     "sectionText": {
       "data-center-basics": "A data center is a building full of computers called servers. They store your photos, run your apps, and keep the internet working.",
       "nepal-dcs": "Nepal has 9 data centers. 8 are in the Kathmandu Valley, and 1 is in Butwal. One of them is probably helping you right now, like when you check your bank balance or phone signal.",
-      "always-on": "Data centers run all day and all night, every day. They never stop. They use as much power as 128,000 homes — even while you sleep.",
+      "always-on": "Data centers run all day and all night, every day. They never stop. They use over 15 MW of power — even while you sleep.",
       "power-bars": "Nepal's 9 data centers use over 15 megawatts of power — enough for 128,000 homes. That is more than the whole city of Biratnagar uses, and five times what Dhangadhi uses. Just one row of server racks uses as much power as about 700 homes.",
       "water-usage": "Data centers use water to keep their servers cool. Nepal's 9 data centers use about 230 million litres of water every year — about 90 Olympic swimming pools. This is the same underground water that people in Kathmandu drink.",
       "message-journey": "When you send a message, it travels from your phone to a cell tower, then to a data center, and then to your friend. All of this happens in under 100 milliseconds — faster than you can blink.",
@@ -118,7 +118,7 @@
       "chapterLabel": "Chapter 03 · Always On",
       "tag": "⏰ 24/7",
       "title": "Always Awake",
-      "textHtml": "Data centers run <span class=\"signal-box green\">24/7</span>. They use as much power as <span class=\"signal-box peach\">128,000 homes</span> — and never stop, even while you sleep."
+      "textHtml": "Data centers run <span class=\"signal-box green\">24/7</span>. They use over <span class=\"signal-box peach\">15 MW+</span> of energy — and never stop, even while you sleep."
     }
   ],
 
