@@ -566,8 +566,8 @@
       const mapCenter = mapData.center || { lat: 27.7172, lng: 85.3240, zoom: 8 };
       const map = L.map('nepalMap', { scrollWheelZoom: false, dragging: true, zoomControl: true }).setView(
         [mapCenter.lat, mapCenter.lng], mapCenter.zoom);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OSM &copy; CARTO',
-        subdomains: 'abcd', maxZoom: 19 }).addTo(map);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19 }).addTo(map);
       (mapData.markers || [
         { lat: 27.7172, lng: 85.3240, color: '#AF9ED7', popup: 'Kathmandu Valley — 8 data centers' },
         { lat: 27.7005, lng: 83.4485, color: '#FDC9B4', popup: 'Butwal — 1 data center' }
